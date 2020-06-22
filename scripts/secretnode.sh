@@ -23,3 +23,7 @@ chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
 usermod -aG docker $(whoami)
+
+echo ""
+
+docker-compose up

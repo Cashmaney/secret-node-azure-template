@@ -30,7 +30,9 @@
       "metadata": {
         "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
       },
-      "defaultValue": ""
+      // "defaultValue": "[deployment().properties.templateLink.uri]"
+      //https://github.com/Cashmaney/secret-node-azure-template
+      "defaultValue": "https://raw.githubusercontent.com/Cashmaney/secret-node-azure-template/master/"
     },
     "_artifactsLocationSasToken": {
       "type": "securestring",
@@ -205,23 +207,23 @@
           ]
         },
         "protectedSettings": {
-          "commandToExecute": "[concat('scripts/secretnode.sh', parameters('_artifactsLocationSasToken'))]"
+          "commandToExecute": "[concat('sh scripts/secretnode.sh', parameters('_artifactsLocationSasToken'))]"
         }
       }
     }
   ],
   "outputs": {
-        "adminUsername": {
-            "type": "string",
-            "value": "[parameters('adminUsername')]"
-        },
-        "hostname": {
-            "type": "string",
-            "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]"
-        },
-        "sshCommand": {
-            "type": "string",
-            "value": "[concat('ssh ', parameters('adminUsername'), '@', reference(variables('publicIPAddressName')).dnsSettings.fqdn)]"
-        }
+    "adminUsername": {
+      "type": "string",
+      "value": "[parameters('adminUsername')]"
+    },
+    "hostname": {
+      "type": "string",
+      "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]"
+    },
+    "sshCommand": {
+      "type": "string",
+      "value": "[concat('ssh ', parameters('adminUsername'), '@', reference(variables('publicIPAddressName')).dnsSettings.fqdn)]"
     }
+  }
 }
