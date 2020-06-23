@@ -23,7 +23,7 @@
     },
     "moniker": {
       "type": "string",
-      "defaultValue": "AzureSecretNodeDefault",
+      "defaultValue": "AzureSecretNodeDefault2",
       "metadata": {
         "description": "The blockchain software to install on the VM"
       }
@@ -37,14 +37,14 @@
     },
     "registrationService": {
       "type": "string",
-      "defaultValue": "AzureSecretNodeDefault",
+      "defaultValue": "reg-snet-test1.uksouth.azurecontainer.io:8081",
       "metadata": {
         "description": "The blockchain software to install on the VM"
       }
     },
     "persistentPeers": {
       "type": "string",
-      "defaultValue": "201cff36d13c6352acfc4a373b60e83211cd3102@51.132.225.152:26656",
+      "defaultValue": "115aa0a629f5d70dd1d464bc7e42799e00f4edae@51.132.225.152:26656",
       "metadata": {
         "description": "List of peers to intially connect to"
       }
@@ -264,7 +264,7 @@
           ]
         },
         "protectedSettings": {
-          "commandToExecute": "[concat('sh secretnode.sh',' ',parameters('adminUsername'),' ',parameters('chainId'),' ',parameters('moniker'),' ',parameters('persistentPeers'),' ',parameters('rpcUrl'),' ',parameters('registrationSerivce'),' ',parameters('_artifactsLocationSasToken'))]"
+          "commandToExecute": "[concat('sh secretnode.sh',' ',parameters('adminUsername'),' ',parameters('chainId'),' ',parameters('moniker'),' ',parameters('persistentPeers'),' ',parameters('rpcUrl'),' ',parameters('registrationService'),' ',parameters('_artifactsLocationSasToken'))]"
         }
       }
     }

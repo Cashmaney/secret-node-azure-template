@@ -19,6 +19,11 @@ services:
       - /tmp/.enigmad:/root/.enigmad
     environment:
       - SGX_MODE=HW
+      - MONIKER
+      - RPC_URL
+      - CHAINID
+      - PERSISTENT_PEERS
+      - REGISTRATION_SERVICE
     healthcheck:
       test: ["CMD", "curl", "-f", "http://127.0.0.1:26657"]
       interval: 1m30s
