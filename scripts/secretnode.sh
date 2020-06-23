@@ -26,7 +26,7 @@ mkdir -p /usr/local/bin/secret-node
 
 curl -L https://raw.githubusercontent.com/Cashmaney/secret-node-azure-template/master/scripts/docker-compose.yaml -o /usr/local/bin/secret-node/docker-compose.yaml
 
-usermod -aG docker $2
+usermod -aG docker $1
 
 ################################################################
 # Configure to auto start at boot					    #
