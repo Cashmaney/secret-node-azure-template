@@ -39,8 +39,7 @@ mkdir -p /usr/local/bin/secret-node
 
 sudo curl -L https://raw.githubusercontent.com/Cashmaney/secret-node-azure-template/master/scripts/docker-compose.yaml -o /usr/local/bin/secret-node/docker-compose.yaml
 
-sudo sed -i 's/\/tmp\/.enigmad:"/\/home\/'$1'\/.enigmad":/g' /usr/local/bin/secret-node/docker-compose.yaml
-sudo sed -i 's/\/tmp\/.enigmacli:"/\/home\/'$1'\/.enigmacli":/g' /usr/local/bin/secret-node/docker-compose.yaml
+sudo sed -i 's/\/tmp\/.secretnode:/\/home\/'$1'\/:/g' /usr/local/bin/secret-node/docker-compose.yaml
 
 echo "Setting Secret Node environment variables" >> /home/$1/install.progress.txt
 
