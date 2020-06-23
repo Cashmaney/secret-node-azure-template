@@ -22,8 +22,19 @@ chmod +x /usr/local/bin/docker-compose
 
 docker-compose --version
 
+mkdir -p /usr/local/bin/secret-node
+
+curl -L https://raw.githubusercontent.com/Cashmaney/secret-node-azure-template/master/scripts/docker-compose.yaml -o /usr/local/bin/secret-node/docker-compose.yaml
+
 usermod -aG docker $(whoami)
 
-echo ""
-
-docker-compose up
+################################################################
+# Configure to auto start at boot					    #
+################################################################
+file=/etc/init.d/bitcoin
+if [ ! -e "$file" ]
+then
+	printf '%s\n%s\n' '#!/bin/sh' 'docker-compose -f /usr/local/bin/secret-node/docker-compose.yaml up -d' | sudo tee /etc/init.d/secret-node
+	sudo chmod +x /etc/init.d/secret-node
+	sudo update-rc.d secret-node defaults
+fi
