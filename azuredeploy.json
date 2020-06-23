@@ -207,7 +207,7 @@
           ]
         },
         "protectedSettings": {
-          "commandToExecute": "[concat('sh scripts/secretnode.sh', parameters('_artifactsLocationSasToken'))]"
+          "commandToExecute": "[concat('AZUSERNAME=', parameters('adminUsername'), ' sh scripts/secretnode.sh', parameters('_artifactsLocationSasToken'))]"
         }
       }
     }

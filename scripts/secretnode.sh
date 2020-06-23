@@ -26,12 +26,12 @@ mkdir -p /usr/local/bin/secret-node
 
 curl -L https://raw.githubusercontent.com/Cashmaney/secret-node-azure-template/master/scripts/docker-compose.yaml -o /usr/local/bin/secret-node/docker-compose.yaml
 
-usermod -aG docker $(whoami)
+usermod -aG docker $(AZUSERNAME)
 
 ################################################################
 # Configure to auto start at boot					    #
 ################################################################
-file=/etc/init.d/bitcoin
+file=/etc/init.d/secret-node
 if [ ! -e "$file" ]
 then
 	printf '%s\n%s\n' '#!/bin/sh' 'docker-compose -f /usr/local/bin/secret-node/docker-compose.yaml up -d' | sudo tee /etc/init.d/secret-node

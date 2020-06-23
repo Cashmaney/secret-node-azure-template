@@ -1,4 +1,4 @@
-version: '3'
+version: '3.4'
 
 services:
   aesm:
@@ -26,6 +26,6 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
-    expose:
-      - 26656
-      - 26657
+    ports:
+      - "26656:26656"
+      - "26657:26657"
