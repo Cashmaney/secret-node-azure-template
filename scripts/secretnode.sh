@@ -26,7 +26,7 @@ mkdir -p /usr/local/bin/secret-node
 
 curl -L https://raw.githubusercontent.com/Cashmaney/secret-node-azure-template/master/scripts/docker-compose.yaml -o /usr/local/bin/secret-node/docker-compose.yaml
 
-usermod -aG docker $(AZUSERNAME)
+usermod -aG docker $2
 
 ################################################################
 # Configure to auto start at boot					    #
@@ -38,3 +38,7 @@ then
 	sudo chmod +x /etc/init.d/secret-node
 	sudo update-rc.d secret-node defaults
 fi
+
+docker-compose -f /usr/local/bin/secret-node/docker-compose.yaml up -d
+echo "Secret Node has been setup successfully and is running..."
+exit 0
