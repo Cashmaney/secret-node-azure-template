@@ -16,12 +16,26 @@
     },
     "chainId": {
       "type": "string",
-      "defaultValue": "secret-testnet-1",
+      "defaultValue": "enigma-testnet-1",
       "metadata": {
         "description": "The blockchain software to install on the VM"
       }
     },
     "moniker": {
+      "type": "string",
+      "defaultValue": "AzureSecretNodeDefault",
+      "metadata": {
+        "description": "The blockchain software to install on the VM"
+      }
+    },
+    "rpcUrl": {
+      "type": "string",
+      "defaultValue": "51.132.225.152:26657",
+      "metadata": {
+        "description": "The blockchain software to install on the VM"
+      }
+    },
+    "registrationService": {
       "type": "string",
       "defaultValue": "AzureSecretNodeDefault",
       "metadata": {
@@ -52,7 +66,6 @@
         "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
       },
       // "defaultValue": "[deployment().properties.templateLink.uri]"
-      //https://github.com/Cashmaney/secret-node-azure-template
       "defaultValue": "https://raw.githubusercontent.com/Cashmaney/secret-node-azure-template/master/"
     },
     "_artifactsLocationSasToken": {
@@ -251,7 +264,7 @@
           ]
         },
         "protectedSettings": {
-          "commandToExecute": "[concat('sh secretnode.sh',' ',parameters('adminUsername'),' ',parameters('chainId'),' ',parameters('moniker'),' ',parameters('persistentPeers'),' ',parameters('_artifactsLocationSasToken'))]"
+          "commandToExecute": "[concat('sh secretnode.sh',' ',parameters('adminUsername'),' ',parameters('chainId'),' ',parameters('moniker'),' ',parameters('persistentPeers'),' ',parameters('rpcUrl'),' ',parameters('registrationSerivce'),' ',parameters('_artifactsLocationSasToken'))]"
         }
       }
     }

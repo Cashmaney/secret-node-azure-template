@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# 1 = username
+# 2 = moniker
+# 3 = chainid
+# 4 = persistent peers
+# 5 = rpc url (to get genesis file from)
+# 6 = registration service (our custom registration helper)
+
 export DEBIAN_FRONTEND=noninteractive
 
 sudo /bin/date +%H:%M:%S > /home/$1/install.progress.txt
@@ -46,12 +53,15 @@ echo "Setting Secret Node environment variables" >> /home/$1/install.progress.tx
 echo "export CHAINID=$2" >> /home/$1/.bashrc
 echo "export MONIKER=$3" >> /home/$1/.bashrc
 echo "export PERSISTENT_PEERS=$4" >> /home/$1/.bashrc
+echo "export RPC_URL=$5" >> /home/$1/.bashrc
+echo "export REGISTRATION_SERVICE=$6" >> /home/$1/.bashrc
 # echo "export GENESIS_PATH=$5" >> /home/$1/.bashrc
 
 export CHAINID=$2
 export MONIKER=$3
 export PERSISTENT_PEERS=$4
-# export GENESIS_PATH=$5
+export RPC_URL=$5
+export REGISTRATION_SERVICE=$6
 
 echo "CHAINID=$2" >> /home/$1/install.progress.txt
 echo "MONIKER=$3" >> /home/$1/install.progress.txt
